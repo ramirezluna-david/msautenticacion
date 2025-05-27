@@ -3,6 +3,8 @@ package com.edutech.msautenticacion.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.edutech.msautenticacion.model.Cred;
@@ -42,5 +44,21 @@ public class UserCredService {
         }
 
         return false;
+    }
+
+    public Boolean update(int idUser, Cred user) {
+        Cred use = credencialesRepository.findById(idUser);
+        if(use != null) {
+            use.setIdUsuario(idUser);
+            use.setUserName(user.getUserName());
+            use.setPassword(user.getPassword());
+            use.setEmail(user.getEmail());
+            use.setFechaCreacion(user.getFechaCreacion());
+
+            credencialesRepository.save(use);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

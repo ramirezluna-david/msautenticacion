@@ -3,6 +3,8 @@ package com.edutech.msautenticacion.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.edutech.msautenticacion.model.Token;
@@ -38,5 +40,20 @@ public class TokenService {
         }
 
         return false;
+    }
+
+    public Boolean update(int idToken, Token token) {
+        Token tok = tokenRepository.findById(idToken);
+        if(tok != null) {
+            tok.setIdToken(idToken);
+            tok.setEmisionToken(token.getEmisionToken());
+            tok.setRevocacionToken(token.getRevocacionToken());
+            tok.setIsRevoked(token.getIsRevoked());
+
+            tokenRepository.save(tok);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

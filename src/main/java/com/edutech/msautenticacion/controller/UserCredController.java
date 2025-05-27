@@ -62,15 +62,7 @@ public class UserCredController {
 
     @PutMapping("/{idUsuario}")
     public ResponseEntity<Cred> updateCredenciales(@PathVariable int idUsuario, @RequestBody Cred user) {
-        Cred use = credencialessService.findById(idUsuario);
-        if(use != null) {
-            use.setIdUsuario(idUsuario);
-            use.setUserName(user.getUserName());
-            use.setPassword(user.getPassword());
-            use.setEmail(user.getEmail());
-            use.setFechaCreacion(user.getFechaCreacion());
-
-            credencialessService.save(use);
+        if(credencialessService.update(idUsuario, user)) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

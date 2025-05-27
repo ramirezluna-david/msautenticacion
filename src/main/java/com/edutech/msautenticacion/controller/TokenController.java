@@ -69,14 +69,7 @@ public class TokenController {
 
     @PutMapping("/{idToken}")
     public ResponseEntity<Token> updateToken(@PathVariable int idToken, @RequestBody Token token) {
-        Token tok = tokenService.findById(idToken);
-        if(tok != null) {
-            tok.setIdToken(idToken);
-            tok.setEmisionToken(token.getEmisionToken());
-            tok.setRevocacionToken(token.getRevocacionToken());
-            tok.setIsRevoked(token.getIsRevoked());
-
-            tokenService.save(tok);
+        if(tokenService.update(idToken, token)) {
             return new ResponseEntity<>(token, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
