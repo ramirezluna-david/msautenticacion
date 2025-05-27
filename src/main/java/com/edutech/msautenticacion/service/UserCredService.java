@@ -32,4 +32,15 @@ public class UserCredService {
     public Cred userxId(int idUser) {
         return credencialesRepository.getReferenceById(idUser);
     }
+
+    public Boolean cambiarContrasena(int idUser, String password) {
+        Cred user = credencialesRepository.findById(idUser);
+        if(user != null) {
+            user.setPassword(password);
+            credencialesRepository.save(user);
+            return true;
+        }
+
+        return false;
+    }
 }
