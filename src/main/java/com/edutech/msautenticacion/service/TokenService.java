@@ -17,15 +17,26 @@ public class TokenService {
         return tokenRepository.save(token);
     }
 
-    public Token findById(int idClase) {
-        return tokenRepository.findById(idClase);
+    public Token findById(int idToken) {
+        return tokenRepository.findById(idToken);
     }
 
     public List<Token> findAll() {
         return tokenRepository.findAll();
     }
 
-    public void deleteById(int idClase) {
-        tokenRepository.deleteById(idClase);
+    public void deleteById(int idToken) {
+        tokenRepository.deleteById(idToken);
+    }
+
+    public Boolean cambiarEstado(int idToken) {
+        Token buscarToken = tokenRepository.findById(idToken);
+        if(buscarToken != null) {
+            buscarToken.setIsRevoked((!buscarToken.getIsRevoked()));
+            tokenRepository.save(buscarToken);
+            return true;
+        }
+
+        return false;
     }
 }
