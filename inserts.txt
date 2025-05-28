@@ -1,0 +1,23 @@
+INSERT INTO cred (user_name, password, email, fecha_creacion) VALUES
+('juanperez', 'password123', 'juan.perez@example.com', '2024-01-15'),
+('mariaramos', 'securePass9!', 'maria.ramos@example.com', '2024-02-01'),
+('carloslopez', 'carL0sPwd$', 'carlos.lopez@example.com', '2024-03-10'),
+('anitagomez', 'anitaG123#', 'anita.gomez@example.com', '2024-03-25'),
+('robertomtz', 'r0bPass!!', 'roberto.martinez@example.com', '2024-04-02'),
+('lauraquint', 'LQ2024$!', 'laura.quintero@example.com', '2024-04-15'),
+('felipemora', 'felip3Pwd*', 'felipe.mora@example.com', '2024-05-01'),
+('monicadiaz', 'M0nicaSecure', 'monica.diaz@example.com', '2024-05-10'),
+('diegorios', 'Dieg0R!os', 'diego.rios@example.com', '2024-05-15'),
+('nataliarey', 'Naty1234$', 'natalia.rey@example.com', '2024-05-20');
+
+INSERT INTO token (emision_token, revocacion_token, is_revoked, id_usuario) VALUES
+('2024-05-01 10:15:00', '2024-05-01 12:15:00', FALSE, 1),
+('2024-05-02 09:00:00', '2024-05-02 11:00:00', TRUE, 2),
+('2024-05-03 14:30:00', '2024-05-03 15:00:00', FALSE, 3),
+('2024-05-04 08:45:00', '2024-05-04 09:45:00', TRUE, 4),
+('2024-05-05 16:00:00', '2024-05-05 18:00:00', FALSE, 5),
+('2024-05-06 11:20:00', '2024-05-06 12:20:00', FALSE, 6),
+('2024-05-07 07:30:00', '2024-05-07 09:30:00', TRUE, 7),
+('2024-05-08 13:15:00', '2024-05-08 14:15:00', FALSE, 8),
+('2024-05-09 10:00:00', '2024-05-09 12:00:00', TRUE, 9),
+('2024-05-10 15:45:00', '2024-05-10 16:45:00', FALSE, 10);
