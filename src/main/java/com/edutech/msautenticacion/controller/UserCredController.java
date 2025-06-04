@@ -69,16 +69,17 @@ public class UserCredController {
         }
     }
 
-    @DeleteMapping("/{idUsuario}")
-    public ResponseEntity<?> deleteCredenciales(@PathVariable int idUsuario) {
-        Cred buscarUser = credencialessService.findById(idUsuario);
-        if(buscarUser != null) {
-            credencialessService.deleteById(idUsuario);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+    // REGISTROS YA NO SE ELIMINAN, SE CAMBIA ESTADO ACTIVO O INACTIVO
+    // @DeleteMapping("/{idUsuario}")
+    // public ResponseEntity<?> deleteCredenciales(@PathVariable int idUsuario) {
+    //     Cred buscarUser = credencialessService.findById(idUsuario);
+    //     if(buscarUser != null) {
+    //         credencialessService.deleteById(idUsuario);
+    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    //     } else {
+    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    //     }
+    // }
 
     @PatchMapping("/{idUsuario}/modificar/password")
     public ResponseEntity<?> cambiarContrasena(@PathVariable int idUsuario, @RequestBody Map<String, String> body) {

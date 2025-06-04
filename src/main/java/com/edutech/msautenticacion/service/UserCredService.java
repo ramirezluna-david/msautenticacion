@@ -61,4 +61,15 @@ public class UserCredService {
             return false;
         }
     }
+
+    public Boolean activar(int idUser) {
+        Cred buscarUser = credencialesRepository.findById(idUser);
+        if(buscarUser != null) {
+            buscarUser.setActivo(!buscarUser.getActivo());
+            credencialesRepository.save(buscarUser);
+            return true;
+        }
+
+        return false;
+    }
 }

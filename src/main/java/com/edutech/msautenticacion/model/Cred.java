@@ -43,6 +43,9 @@ public class Cred {
     @Column(nullable = false)
     private LocalDate fechaCreacion;
 
+    @Column(nullable = false)
+    private Boolean activo;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Token> tokens;
